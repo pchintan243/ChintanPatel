@@ -50,3 +50,63 @@ ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
 ScrollReveal().reveal('.home-img img, .services-container, .portfolio-box, .contact form', { origin: 'bottom' });
 ScrollReveal().reveal('.home-content h1, .about-img img', { origin: 'left' });
 ScrollReveal().reveal('.home-content h3, .home-content p, .about-content', { origin: 'right' });
+
+// For Skills Animation
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.skills-track');
+    const professions = Array.from(track.children);
+
+    // Clone the items to create a seamless, infinite loop
+    professions.forEach(profession => {
+        const clone = profession.cloneNode(true);
+        track.appendChild(clone);
+    });
+});
+
+
+// For Typing and Erasing
+document.addEventListener('DOMContentLoaded', () => {
+    const animatedTextElement = document.querySelector('.animated-text');
+
+    // Array of texts to display
+    const texts = [
+        'Chintan Patel',
+        'Backend Developer',
+        'Java Developer'
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let isTyping = true;
+
+    function typeWriter() {
+        const currentText = texts[textIndex];
+
+        if (isTyping) {
+            if (charIndex < currentText.length) {
+                animatedTextElement.textContent += currentText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 130); // Typing speed
+            } else {
+                isTyping = false;
+                setTimeout(typeWriter, 1500); // Pause before erasing
+            }
+        } else {
+            if (charIndex > 0) {
+                animatedTextElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+                setTimeout(typeWriter, 100); // Erasing speed
+            } else {
+                isTyping = true;
+
+                // Move to the next text in the array
+                textIndex = (textIndex + 1) % texts.length;
+
+                setTimeout(typeWriter, 500); // Pause before typing next text
+            }
+        }
+    }
+
+    // Start the animation
+    typeWriter();
+});
