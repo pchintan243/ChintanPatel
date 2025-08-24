@@ -818,3 +818,83 @@ span {
         margin-top: 2rem;
     }
 }
+
+/* Skills Section Styles */
+.skills {
+    min-height: auto; /* Allow content to dictate height */
+    padding-bottom: 7rem; /* Consistent with other sections like services */
+}
+
+.skills h2 {
+    margin-bottom: 5rem; /* Consistent with other headings */
+}
+
+.skills .skills-container {
+    display: grid;
+    /* Responsive grid: columns will automatically adjust, min width 250px, max 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2.5rem; /* Spacing between skill boxes */
+    justify-content: center; /* Center items in the grid */
+    align-items: flex-start; /* Align items to the start of the grid */
+    margin-top: 5rem;
+}
+
+.skills .skills-box {
+    background: var(--second-bg-color); /* Uses your defined background color */
+    padding: 3rem 2rem 4rem; /* Padding inside the box */
+    border-radius: 2rem; /* Rounded corners */
+    text-align: center; /* Center content horizontally */
+    box-shadow: 0 .1rem .5rem var(--shadow-color); /* Subtle shadow */
+    border-top: .6rem solid var(--main-color); /* Top border for accent */
+    border-bottom: .6rem solid var(--main-color); /* Bottom border for accent */
+    transition: 0.5s ease; /* Smooth transition for hover effects */
+}
+
+.skills .skills-box:hover {
+    box-shadow: 0 .1rem 2rem var(--shadow-color); /* Enhanced shadow on hover */
+    transform: scale(1.02); /* Slight scale up on hover */
+}
+
+.skills .skills-box i {
+    font-size: 7rem; /* Large icon size */
+    color: var(--main-color); /* Icon color */
+    margin-bottom: 1rem; /* Space below icon */
+}
+
+.skills .skills-box h3 {
+    font-size: 2.6rem; /* Heading size */
+    font-weight: 600;
+    line-height: 1.2;
+    transition: .5s ease; /* Smooth transition for hover effect */
+}
+
+.skills .skills-box:hover h3 {
+    color: var(--main-color); /* Change text color on hover */
+}
+
+/* Responsive Adjustments for Skills Section */
+@media (max-width: 991px) {
+    .skills .skills-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjust columns for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .skills .skills-container {
+        grid-template-columns: 1fr; /* Stack columns on very small screens */
+    }
+}
+
+@media (max-width: 617px) {
+    .skills .skills-container {
+        grid-template-columns: 1fr; /* Ensure single column on smaller phones */
+    }
+}
+
+.fa-leetcode {
+  font-family: 'Font Awesome 6 Brands' !important;
+}
+
+.skills .skills-container .skills-box .skill-image {
+    color: #754ef9;
+}
